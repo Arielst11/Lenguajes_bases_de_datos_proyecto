@@ -1,0 +1,257 @@
+create table Paises(
+id_pais int not null,
+nombre_pais varchar(50),
+constraint pk_pais primary key(id_pais)
+);
+
+drop table Paises;
+drop table Direccion;
+
+insert into Paises(id_pais,nombre_pais)
+values(1,'Costa_Rica');
+create table Direccion(
+id_direccion int not null,
+id_pais int not null,
+direccion_domicilio varchar(50) not null,
+constraint pk_direccion primary key(id_direccion),
+constraint fk_pais foreign key (id_pais) references Paises(id_pais)
+);
+
+
+insert into Direccion(id_direccion,id_pais,direccion_domicilio)
+values(1,1,'San Jose, la uruca');
+
+create table Cliente(
+id_cliente int not null,
+nombre_cliente varchar(50) not null,
+correo_cliente varchar(50) not null,
+telefono_cliente int not null,
+id_direccion int not null,
+constraint pk_cliente primary key (id_cliente)
+);
+
+insert into Cliente(id_cliente,nombre_cliente,correo_cliente,telefono_cliente,id_direccion)
+values(1,'Carlos','carlos@gmail.com',70594020,1);
+
+create table Aerolinea(
+id_aerolinea int not null,
+nombre_aerolinea varchar(50),
+constraint pk_aerolinea primary key (id_aerolinea)
+);
+
+insert into Aerolinea(id_aerolinea,nombre_aerolinea)
+values(1,'AmericaVuela');
+
+create table Avion(
+id_avion int not null,
+id_aerolinea int not null,
+modelo_avion varchar(50) not null,
+capacidad_pasajeros int not null,
+constraint pk_avion primary key (id_avion),
+constraint fk_aerolinea foreign key (id_aerolinea) references Aerolinea(id_aerolinea)
+);
+create table Paises(
+id_pais int not null,
+nombre_pais varchar(50),
+constraint pk_pais primary key(id_pais)
+);
+
+drop table Paises;
+drop table Direccion;
+
+insert into Paises(id_pais,nombre_pais)
+values(1,'Costa_Rica');
+create table Direccion(
+id_direccion int not null,
+id_pais int not null,
+direccion_domicilio varchar(50) not null,
+constraint pk_direccion primary key(id_direccion),
+constraint fk_pais foreign key (id_pais) references Paises(id_pais)
+);
+
+
+insert into Direccion(id_direccion,id_pais,direccion_domicilio)
+values(1,1,'San Jose, la uruca');
+
+create table Cliente(
+id_cliente int not null,
+nombre_cliente varchar(50) not null,
+correo_cliente varchar(50) not null,
+telefono_cliente int not null,
+id_direccion int not null,
+constraint pk_cliente primary key (id_cliente)
+);
+
+insert into Cliente(id_cliente,nombre_cliente,correo_cliente,telefono_cliente,id_direccion)
+values(1,'Carlos','carlos@gmail.com',70594020,1);
+
+create table Aerolinea(
+id_aerolinea int not null,
+nombre_aerolinea varchar(50),
+constraint pk_aerolinea primary key (id_aerolinea)
+);
+
+insert into Aerolinea(id_aerolinea,nombre_aerolinea)
+values(1,'AmericaVuela');
+
+create table Avion(
+id_avion int not null,
+id_aerolinea int not null,
+modelo_avion varchar(50) not null,
+capacidad_pasajeros int not null,
+constraint pk_avion primary key (id_avion),
+constraint fk_aerolinea foreign key (id_aerolinea) references Aerolinea(id_aerolinea)
+);
+
+insert into Avion(id_avion,id_aerolinea,modelo_avion,capacidad_pasajeros)
+values(1,1,'AmericaVuela',250);
+
+create table Destino(
+id_destino int not null,
+nombre_destino varchar(50) not null,
+constraint pk_destino primary key (id_destino)
+);
+
+insert into Destino(id_destino,nombre_destino)
+values(1,'Aeropueto Internacional El Dorado Colombia');
+
+create table tipo_asiento(
+id_tipo int not null,
+nombre_tipo_asiento varchar(50),
+constraint pk_tipo primary key(id_tipo)
+);
+
+
+insert into tipo_asiento(id_tipo,nombre_tipo_asiento)
+values(20,'asiento de clase economica');
+
+create table Vuelos(
+id_vuelo int not null,
+nombre_vuelo varchar(50) not null,
+origen varchar(50) not null,
+id_destino int not null,
+id_avion int not null,
+id_tipo_asiento int null,
+constraint pk_vuelo primary key (id_vuelo),
+constraint fk_id_destino foreign key (id_destino) references Destino(id_destino),
+constraint fk_id_avion foreign key (id_avion) references Avion(id_avion),
+constraint fk_id_tipo_asiento foreign key (id_tipo_asiento) references tipo_asiento(id_tipo)
+);
+
+insert into Vuelos(id_vuelo,nombre_vuelo,origen,id_destino,id_avion,id_tipo_asiento)
+values(1018,'NOMBRE','Aeropuerto interncionla Juan Santa María',1,1,20);
+
+drop table reserva;
+
+
+
+create table Reserva(
+id_reserva int not null,
+id_vuelo int not null,
+precio_boleto int not null,
+cantidad_boletos int not null,
+constraint pk_id_reserva primary key (id_reserva),
+constraint fk_id_vuelos foreign key (id_vuelo) references Vuelos(id_vuelo)
+);
+
+insert into Reserva(id_reserva,id_vuelo,precio_boleto,cantidad_boletos)
+values (1,1018,1000,2);
+
+create table factura (
+id_factura int not null,
+id_reserva int not null,
+id_cliente int not null,
+impuestos int not null,
+total int not null,
+constraint pk_id_factura primary key (id_factura),
+constraint fk_id_reserva foreign key (id_reserva) references Reserva(id_reserva),
+constraint fk_id_cliente foreign key (id_cliente) references Cliente(id_cliente)	
+);
+
+----------Vistas---------
+
+CREATE OR REPLACE VIEW info_reservas_cliente AS
+SELECT c.nombre_cliente, v.nombre_vuelo, v.origen, d.nombre_destino, r.precio_boleto, r.cantidad_boletos
+FROM Cliente c
+INNER JOIN Reserva r ON c.id_cliente = r.id_cliente
+INNER JOIN Vuelos v ON r.id_vuelo = v.id_vuelo
+INNER JOIN Destino d ON v.id_destino = d.id_destino;
+
+CREATE OR REPLACE VIEW info_vuelos_destino AS
+SELECT v.nombre_vuelo, a.modelo_avion, a.capacidad_pasajeros, ae.nombre_aerolinea
+FROM Vuelos v
+INNER JOIN Avion a ON v.id_avion = a.id_avion
+INNER JOIN Aerolinea ae ON a.id_aerolinea = ae.id_aerolinea
+INNER JOIN Destino d ON v.id_destino = d.id_destino
+WHERE d.nombre_destino = 'Aeropueto Internacional El Dorado Colombia';
+
+----------Cursor
+DECLARE pais_cliente VARCHAR(50);
+DECLARE cursor_clientes CURSOR FOR
+    SELECT P.nombre_pais
+    FROM Paises P
+    JOIN Direccion D ON P.id_pais = D.id_pais
+    JOIN Cliente C ON D.id_direccion = C.id_direccion
+    JOIN Reserva R ON C.id_cliente = R.id_cliente;
+OPEN cursor_clientes;
+FETCH cursor_clientes INTO pais_cliente;
+WHILE (FOUND_ROWS() > 0) DO
+    -- Definiir la funcion que se requiere llevar
+    
+    SELECT pais_cliente;
+    FETCH cursor_clientes INTO pais_cliente;
+END WHILE;
+CLOSE cursor_clientes;
+
+-------------Procedimientos almacenados
+----Realizar reserva
+CREATE PROCEDURE insertar_reserva 
+   @id_vuelo int,
+   @precio_boleto int,
+   @cantidad_boletos int
+AS
+BEGIN
+   INSERT INTO Reserva (id_vuelo, precio_boleto, cantidad_boletos)
+   VALUES (@id_vuelo, @precio_boleto, @cantidad_boletos);
+END
+
+------------Triggers
+
+------Revisa los boletos disponibles
+CREATE TRIGGER tr_actualizar_boletos_disponibles
+AFTER INSERT ON Reserva
+FOR EACH ROW
+BEGIN
+    UPDATE Vuelos
+    SET Vuelos.capacidad_pasajeros = Vuelos.capacidad_pasajeros - NEW.cantidad_boletos
+    WHERE Vuelos.id_vuelo = NEW.id_vuelo;
+END;
+
+-----Actualizacion de factura
+CREATE TRIGGER tr_actualizar_precio_total
+AFTER INSERT ON Reserva
+FOR EACH ROW
+BEGIN
+    DECLARE precio_unitario INT;
+    SELECT precio_boleto INTO precio_unitario
+    FROM Reserva
+    WHERE id_reserva = NEW.id_reserva;
+    
+    INSERT INTO factura(id_factura, id_reserva, id_cliente, impuestos, total)
+    VALUES (NULL, NEW.id_reserva, (SELECT id_cliente FROM Cliente WHERE id_direccion = (SELECT id_direccion FROM Reserva WHERE id_reserva = NEW.id_reserva)), 0, NEW.cantidad_boletos * precio_unitario);
+END;
+-------Revisa que no haya direccion asociadas antes de eliminar
+
+CREATE TRIGGER tr_evitar_eliminar_pais_con_direccion
+BEFORE DELETE ON Paises
+FOR EACH ROW
+BEGIN
+    DECLARE direccion_existe INT;
+    SELECT COUNT(*) INTO direccion_existe
+    FROM Direccion
+    WHERE id_pais = OLD.id_pais;
+    
+    IF direccion_existe > 0 THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'No se puede eliminar un país que tiene direcciones asociadas';
+    END IF;
+END;
