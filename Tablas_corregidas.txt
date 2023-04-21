@@ -1,14 +1,19 @@
+/////////////////////////////////Ariel
 create table Paises(
-id_pais int not null,
+id_pais number(10) not null,
 nombre_pais varchar(50),
+codigo_pais varchar(4),
 constraint pk_pais primary key(id_pais)
 );
-
+/////////////////////////////////Ariel
+(
 drop table Paises;
 drop table Direccion;
 
 insert into Paises(id_pais,nombre_pais)
 values(1,'Costa_Rica');
+
+
 create table Direccion(
 id_direccion int not null,
 id_pais int not null,
@@ -21,14 +26,24 @@ constraint fk_pais foreign key (id_pais) references Paises(id_pais)
 insert into Direccion(id_direccion,id_pais,direccion_domicilio)
 values(1,1,'San Jose, la uruca');
 
+
+
+/////////////////////////////////Ariel
 create table Cliente(
-id_cliente int not null,
+id_cliente number(10) not null,
 nombre_cliente varchar(50) not null,
 correo_cliente varchar(50) not null,
 telefono_cliente int not null,
-id_direccion int not null,
-constraint pk_cliente primary key (id_cliente)
+direccion varchar(200) not null,
+id_pais int not null,
+constraint pk_cliente primary key (id_cliente),
+constraint fk_Paises foreign key (id_pais) references Paises(id_pais)
 );
+/////////////////////////////////Ariel
+
+
+
+
 
 insert into Cliente(id_cliente,nombre_cliente,correo_cliente,telefono_cliente,id_direccion)
 values(1,'Carlos','carlos@gmail.com',70594020,1);
@@ -44,7 +59,7 @@ values(1,'AmericaVuela');
 
 create table Avion(
 id_avion int not null,
-id_aerolinea int not null,
+id_aerolinea int not nullSS
 modelo_avion varchar(50) not null,
 capacidad_pasajeros int not null,
 constraint pk_avion primary key (id_avion),
@@ -60,11 +75,12 @@ drop table Paises;
 drop table Direccion;
 
 insert into Paises(id_pais,nombre_pais)
-values(1,'Costa_Rica');
+values(1,'Costa_Rica');´
+
+
 create table Direccion(
 id_direccion int not null,
-id_pais int not null,
-direccion_domicilio varchar(50) not null,
+id_pais int not null
 constraint pk_direccion primary key(id_direccion),
 constraint fk_pais foreign key (id_pais) references Paises(id_pais)
 );
