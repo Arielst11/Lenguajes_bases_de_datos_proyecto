@@ -27,18 +27,28 @@ public class Menu extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMregistrarUsuarios = new javax.swing.JMenu();
+        jMmanejoUsuarios = new javax.swing.JMenu();
+        jMusuarioRegistro = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jMregistrarUsuarios.setText("Registrar Usuarios");
-        jMregistrarUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
+        jMmanejoUsuarios.setText("Usuarios");
+        jMmanejoUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMregistrarUsuariosMouseClicked(evt);
+                jMmanejoUsuariosMouseClicked(evt);
             }
         });
-        jMenuBar1.add(jMregistrarUsuarios);
+
+        jMusuarioRegistro.setText("Registrar usuario");
+        jMusuarioRegistro.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMusuarioRegistroMouseClicked(evt);
+            }
+        });
+        jMmanejoUsuarios.add(jMusuarioRegistro);
+
+        jMenuBar1.add(jMmanejoUsuarios);
 
         jMenu2.setText("Edit");
         jMenuBar1.add(jMenu2);
@@ -59,13 +69,17 @@ public class Menu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMregistrarUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMregistrarUsuariosMouseClicked
-RegistroClientes registro = new RegistroClientes();
-registro.setVisible(true);
+    private void jMmanejoUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMmanejoUsuariosMouseClicked
+
 
 
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMregistrarUsuariosMouseClicked
+    }//GEN-LAST:event_jMmanejoUsuariosMouseClicked
+
+    private void jMusuarioRegistroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMusuarioRegistroMouseClicked
+RegistroClientes registro = new RegistroClientes();
+registro.setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_jMusuarioRegistroMouseClicked
 
     /**
      * @param args the command line arguments
@@ -105,6 +119,7 @@ registro.setVisible(true);
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenu jMregistrarUsuarios;
+    private javax.swing.JMenu jMmanejoUsuarios;
+    private javax.swing.JMenu jMusuarioRegistro;
     // End of variables declaration//GEN-END:variables
 }

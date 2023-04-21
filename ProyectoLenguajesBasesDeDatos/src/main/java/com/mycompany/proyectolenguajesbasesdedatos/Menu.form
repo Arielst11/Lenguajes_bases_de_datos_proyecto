@@ -4,13 +4,23 @@
   <NonVisualComponents>
     <Menu class="javax.swing.JMenuBar" name="jMenuBar1">
       <SubComponents>
-        <Menu class="javax.swing.JMenu" name="jMregistrarUsuarios">
+        <Menu class="javax.swing.JMenu" name="jMmanejoUsuarios">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Registrar Usuarios"/>
+            <Property name="text" type="java.lang.String" value="Usuarios"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jMregistrarUsuariosMouseClicked"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jMmanejoUsuariosMouseClicked"/>
           </Events>
+          <SubComponents>
+            <Menu class="javax.swing.JMenu" name="jMusuarioRegistro">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Registrar usuario"/>
+              </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jMusuarioRegistroMouseClicked"/>
+              </Events>
+            </Menu>
+          </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu2">
           <Properties>
