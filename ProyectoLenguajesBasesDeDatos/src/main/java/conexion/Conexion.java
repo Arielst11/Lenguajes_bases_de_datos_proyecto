@@ -6,14 +6,22 @@ package conexion;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.JOptionPane;
 /**
  *
  * @author fidelitas
  */
 public class Conexion {
     
-    private Connection conn = null;
+    public Connection conn = null;
     private String url;
     private String user;
     private String password;
@@ -24,35 +32,41 @@ public class Conexion {
         this.password = password;
     }
      public Conexion() {
-       conectar();
+      // conectar();
     }
     
-     private void conectar(){
+     
+     public void conectar(){
          
          try{
           Class.forName("oracle.jdbc.OracleDriver"); //driver
           url = "jdbc:oracle:thin:@localhost:1521:ORCL";
-          user = "sys as sysdba";
+          //user = "sys as sysdba";
+          user = "HR";
           password = "oracle2023";
           conn = DriverManager.getConnection(url, user, password);
           System.out.println ("conectado");
          }catch (Exception e){
              System.out.println ("error al conectar");
          }
+         
      }
          
-     
      
      public void desconectar(){
          try {
              conn.close();
              System.out.println ("desconectado");
          }catch(Exception e){
-             System.out.println ("error al desconectar");
+             System.out.println ("hay un error al desconectar");
          }
          
          
      }
     
+     
+     
 
+     
+     
      }
