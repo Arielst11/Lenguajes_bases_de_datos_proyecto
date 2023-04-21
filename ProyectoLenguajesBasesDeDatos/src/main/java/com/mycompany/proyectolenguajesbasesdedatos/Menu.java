@@ -29,6 +29,7 @@ public class Menu extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMmanejoUsuarios = new javax.swing.JMenu();
         jMusuarioRegistro = new javax.swing.JMenu();
+        jMmodificarCliente = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -47,6 +48,14 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         jMmanejoUsuarios.add(jMusuarioRegistro);
+
+        jMmodificarCliente.setText("Modificar Cliente");
+        jMmodificarCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMmodificarClienteMouseClicked(evt);
+            }
+        });
+        jMmanejoUsuarios.add(jMmodificarCliente);
 
         jMenuBar1.add(jMmanejoUsuarios);
 
@@ -80,6 +89,11 @@ public class Menu extends javax.swing.JFrame {
 RegistroClientes registro = new RegistroClientes();
 registro.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_jMusuarioRegistroMouseClicked
+
+    private void jMmodificarClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMmodificarClienteMouseClicked
+ModificarClientes modificar = new ModificarClientes();
+modificar.setVisible(true);// TODO add your handling code here:        // TODO add your handling code here:
+    }//GEN-LAST:event_jMmodificarClienteMouseClicked
 
     /**
      * @param args the command line arguments
@@ -120,6 +134,7 @@ registro.setVisible(true);        // TODO add your handling code here:
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMmanejoUsuarios;
+    private javax.swing.JMenu jMmodificarCliente;
     private javax.swing.JMenu jMusuarioRegistro;
     // End of variables declaration//GEN-END:variables
 }
