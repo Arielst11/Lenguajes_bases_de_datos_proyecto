@@ -77,7 +77,7 @@ public class Menu extends javax.swing.JFrame {
 
         jMenuBar1.add(jMmanejoUsuarios);
 
-        jMenu2.setText("Edit");
+        jMenu2.setText("Facturas");
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
