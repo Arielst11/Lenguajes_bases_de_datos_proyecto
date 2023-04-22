@@ -122,7 +122,7 @@ DefaultTableModel dtm;
         jScrollPane1 = new javax.swing.JScrollPane();
         jTablePais = new javax.swing.JTable();
         jLpaisLista = new javax.swing.JLabel();
-        jBingresarCliente = new javax.swing.JButton();
+        jBactualizarCliente = new javax.swing.JButton();
         jBcerrar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jTidClienteModificar = new javax.swing.JTextField();
@@ -209,15 +209,15 @@ DefaultTableModel dtm;
 
         jLpaisLista.setText("Lista de países");
 
-        jBingresarCliente.setText("Modificar Clientes");
-        jBingresarCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+        jBactualizarCliente.setText("Modificar Cliente");
+        jBactualizarCliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jBingresarClienteMouseClicked(evt);
+                jBactualizarClienteMouseClicked(evt);
             }
         });
-        jBingresarCliente.addActionListener(new java.awt.event.ActionListener() {
+        jBactualizarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBingresarClienteActionPerformed(evt);
+                jBactualizarClienteActionPerformed(evt);
             }
         });
 
@@ -261,12 +261,9 @@ DefaultTableModel dtm;
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jBingresarCliente)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLmodificarClientesTitulo)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addComponent(jBactualizarCliente)
+                    .addComponent(jLmodificarClientesTitulo))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(jBcerrar)
@@ -347,7 +344,7 @@ DefaultTableModel dtm;
                     .addComponent(jLabel1)
                     .addComponent(jTidClienteModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(5, 5, 5)
-                .addComponent(jBingresarCliente)
+                .addComponent(jBactualizarCliente)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
@@ -393,27 +390,29 @@ DefaultTableModel dtm;
         // TODO add your handling code here:
     }//GEN-LAST:event_jTdireccionActionPerformed
 
-    private void jBingresarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBingresarClienteActionPerformed
+    private void jBactualizarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBactualizarClienteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jBingresarClienteActionPerformed
+    }//GEN-LAST:event_jBactualizarClienteActionPerformed
 
     private void jBcerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBcerrarMouseClicked
 this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_jBcerrarMouseClicked
 
-    private void jBingresarClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBingresarClienteMouseClicked
+    private void jBactualizarClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBactualizarClienteMouseClicked
 
-int id = 1;
+int id = Integer.parseInt(jTidClienteModificar.getText());
 String nombre = jTnombreCliente.getText();
 String correo = jTcorreoCliente.getText();
 int telefono = Integer.parseInt(jTtelefonoCliente1.getText());
 String direccion = jTdireccion.getText();
 int idPais = Integer.parseInt(jTpais.getText());
-Cliente clienteNuevo = new Cliente(id, nombre,correo, telefono, direccion , idPais  );
-clienteNuevo.ingresarCliente();
+Cliente clienteActualizar = new Cliente(id, nombre,correo, telefono, direccion , idPais  );
+clienteActualizar.modificarCliente();
+
+this.dispose();
 
 //hacer ingreso de cliente en base de datos.
-    }//GEN-LAST:event_jBingresarClienteMouseClicked
+    }//GEN-LAST:event_jBactualizarClienteMouseClicked
 
     private void jTidClienteModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTidClienteModificarActionPerformed
         // TODO add your handling code here:
@@ -458,8 +457,8 @@ clienteNuevo.ingresarCliente();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBactualizarCliente;
     private javax.swing.JButton jBcerrar;
-    private javax.swing.JButton jBingresarCliente;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLcorreoCliente;
     private javax.swing.JLabel jLdireccion;

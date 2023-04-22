@@ -78,15 +78,10 @@
               <Group type="102" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="jBingresarCliente" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="jLmodificarClientesTitulo" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="jBactualizarCliente" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLmodificarClientesTitulo" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
@@ -195,7 +190,7 @@
                       <Component id="jTidClienteModificar" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                  <Component id="jBingresarCliente" min="-2" max="-2" attributes="0"/>
+                  <Component id="jBactualizarCliente" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jScrollPane3" pref="184" max="32767" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -311,13 +306,13 @@
             <Property name="text" type="java.lang.String" value="Lista de pa&#xed;ses"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jBingresarCliente">
+        <Component class="javax.swing.JButton" name="jBactualizarCliente">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Modificar Clientes"/>
+            <Property name="text" type="java.lang.String" value="Modificar Cliente"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jBingresarClienteMouseClicked"/>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBingresarClienteActionPerformed"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jBactualizarClienteMouseClicked"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBactualizarClienteActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jBcerrar">

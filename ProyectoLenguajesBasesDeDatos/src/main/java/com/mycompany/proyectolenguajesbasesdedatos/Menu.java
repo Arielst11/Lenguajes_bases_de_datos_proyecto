@@ -30,6 +30,8 @@ public class Menu extends javax.swing.JFrame {
         jMmanejoUsuarios = new javax.swing.JMenu();
         jMusuarioRegistro = new javax.swing.JMenu();
         jMmodificarCliente = new javax.swing.JMenu();
+        jMeliminarCliente = new javax.swing.JMenu();
+        jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -41,7 +43,7 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
-        jMusuarioRegistro.setText("Registrar usuario");
+        jMusuarioRegistro.setText("Registrar cliente");
         jMusuarioRegistro.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jMusuarioRegistroMouseClicked(evt);
@@ -49,13 +51,29 @@ public class Menu extends javax.swing.JFrame {
         });
         jMmanejoUsuarios.add(jMusuarioRegistro);
 
-        jMmodificarCliente.setText("Modificar Cliente");
+        jMmodificarCliente.setText("Modificar cliente");
         jMmodificarCliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jMmodificarClienteMouseClicked(evt);
             }
         });
         jMmanejoUsuarios.add(jMmodificarCliente);
+
+        jMeliminarCliente.setText("Eliminar cliente");
+        jMeliminarCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMeliminarClienteMouseClicked(evt);
+            }
+        });
+        jMmanejoUsuarios.add(jMeliminarCliente);
+
+        jMenu1.setText("Historial de cambios");
+        jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu1MouseClicked(evt);
+            }
+        });
+        jMmanejoUsuarios.add(jMenu1);
 
         jMenuBar1.add(jMmanejoUsuarios);
 
@@ -95,6 +113,16 @@ ModificarClientes modificar = new ModificarClientes();
 modificar.setVisible(true);// TODO add your handling code here:        // TODO add your handling code here:
     }//GEN-LAST:event_jMmodificarClienteMouseClicked
 
+    private void jMeliminarClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMeliminarClienteMouseClicked
+BorrarClientes borrarClientes = new BorrarClientes();
+borrarClientes.setVisible(true);// TODO add your handling code here:
+    }//GEN-LAST:event_jMeliminarClienteMouseClicked
+
+    private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
+AuditoriaClientes auditoria = new AuditoriaClientes();
+auditoria.setVisible(true);// TODO add your handling code here:
+    }//GEN-LAST:event_jMenu1MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -131,6 +159,8 @@ modificar.setVisible(true);// TODO add your handling code here:        // TODO a
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu jMeliminarCliente;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMmanejoUsuarios;

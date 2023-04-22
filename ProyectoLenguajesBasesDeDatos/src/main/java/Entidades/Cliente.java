@@ -30,6 +30,10 @@ public Cliente(int id, String nombre_cliente, String correo_cliente, int telefon
         this.id_pais = id_pais;
     }
 
+    public Cliente(int id_cliente) {
+        this.id_cliente = id_cliente;
+    }
+
     public Cliente() {
     }
 
@@ -69,6 +73,61 @@ PreparedStatement ps;
      cn.desconectar();
 }
 
+public void modificarCliente(){
+     Conexion cn = new Conexion();
+    cn.conectar();
+    
+PreparedStatement ps;
+    // se prepara el statement.    
+    try {
+        /*
+        ps = cn.conn.prepareCall("insert into Cliente"
+     + " (id_cliente,nombre_cliente, correo_cliente,telefono_cliente,direccion,id_pais) values"
+                + "(?,?,?,?,?,?)");
+        */
+        ps = cn.conn.prepareStatement("Update Cliente set "
+                + "nombre_cliente = ?,"
+                + "correo_cliente = ?,"
+                + "telefono_cliente = ?,"
+                + "direccion = ?,"
+                + "id_pais = ?"
+                + "where id_cliente = ?");
+      ps.setString(1, this.nombre_cliente);
+      ps.setString(2, this.correo_cliente);
+      ps.setString(3, String.valueOf(this.telefono_cliente));
+      ps.setString(4, this.direccion);
+      ps.setString(5, String.valueOf(this.id_pais));
+      ps.setString(6, String.valueOf(this.id_cliente));
+    
+      if(ps.executeUpdate() >0){
+          JOptionPane.showMessageDialog(null, "Cliente actualizado");
+      }
+    }catch (SQLException ex){  
+  //  Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE,null,ex);
+  JOptionPane.showMessageDialog(null, "error al actualizar Cliente");
+    }
+     cn.desconectar();
+}
+
+
+public void borrarCliente(){
+    Conexion cn = new Conexion();
+    cn.conectar();
+    
+PreparedStatement ps;
+    // se prepara el statement.    
+    try {
+        ps = cn.conn.prepareCall("Delete from Cliente where id_cliente = ?");
+        
+      ps.setString(1, String.valueOf(this.id_cliente)); 
+      if(ps.executeUpdate() >0){
+          JOptionPane.showMessageDialog(null, "Cliente Eliminado");
+      }
+    }catch (Exception e){    
+  JOptionPane.showMessageDialog(null, "error al eliminar Cliente");
+    }
+     cn.desconectar();
+}
     /**
      * @return the nombre_cliente
      */

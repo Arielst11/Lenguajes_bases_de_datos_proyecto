@@ -14,7 +14,7 @@
           <SubComponents>
             <Menu class="javax.swing.JMenu" name="jMusuarioRegistro">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Registrar usuario"/>
+                <Property name="text" type="java.lang.String" value="Registrar cliente"/>
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jMusuarioRegistroMouseClicked"/>
@@ -22,10 +22,26 @@
             </Menu>
             <Menu class="javax.swing.JMenu" name="jMmodificarCliente">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Modificar Cliente"/>
+                <Property name="text" type="java.lang.String" value="Modificar cliente"/>
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jMmodificarClienteMouseClicked"/>
+              </Events>
+            </Menu>
+            <Menu class="javax.swing.JMenu" name="jMeliminarCliente">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Eliminar cliente"/>
+              </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jMeliminarClienteMouseClicked"/>
+              </Events>
+            </Menu>
+            <Menu class="javax.swing.JMenu" name="jMenu1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Historial de cambios"/>
+              </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jMenu1MouseClicked"/>
               </Events>
             </Menu>
           </SubComponents>
