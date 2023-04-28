@@ -1,0 +1,110 @@
+//// para paises
+
+create sequence pais_sequenceID
+START WITH 1
+INCREMENT BY 1
+NOCACHE
+NOCYCLE;
+
+create table Paises(
+id_pais number(10) not null,
+nombre_pais varchar(50),
+codigo_pais varchar(4),
+constraint pk_pais primary key(id_pais));
+
+create or replace trigger paisInsertID
+before insert on Paises
+for each row
+begin
+select pais_sequenceID.nextval
+INTO :new.id_pais
+from dual;
+end;
+
+
+/// para clientes
+create sequence cliente_sequenceID
+START WITH 1
+INCREMENT BY 1
+NOCACHE
+NOCYCLE;
+
+create table Cliente(
+id_cliente number(10) not null,
+nombre_cliente varchar(50) not null,
+correo_cliente varchar(50) not null,
+telefono_cliente int not null,
+direccion varchar (200) not null,
+id_pais int not null,
+constraint pk_cliente primary key (id_cliente),
+constraint fk_Paises foreign key (id_pais) references Paises(id_pais)
+);
+
+create or replace trigger clienteInsertID
+before insert on Cliente
+for each row
+begin
+select cliente_sequenceID.nextval
+INTO :new.id_cliente
+from dual;
+end;
+
+
+Create table Clientes_AUDITORIA(
+id int not null,
+usuario varchar(30),
+fecha date,
+nombre_cliente varchar(50) not null,
+id_cliente number(10) not null,
+accion varchar(30) not null,
+constraint pk_auditoCliente primary key(id));
+
+
+create sequence Cliente_AUDITORIA_sequenceID
+START WITH 1
+INCREMENT BY 1
+NOCACHE
+NOCYCLE;
+
+create or replace trigger Clientes_AUDITORIA_InsertID
+before insert on Clientes_AUDITORIA
+for each row
+begin
+select Cliente_AUDITORIA_sequenceID.nextval
+INTO :new.id
+from dual;
+end;
+
+create or replace trigger auditoriaCliente 
+after DELETE or Insert Or update
+on Cliente 
+for each row
+declare
+usuario varchar(200);
+accion varchar (50);
+fecha date;
+id int;
+begin
+select SYSDATE into  fecha from dual;
+IF INSERTING then
+accion := 'Insert';
+id := 0;
+usuario:= 'Admin';
+Insert  into Clientes_AUDITORIA (id,usuario,fecha,nombre_cliente,id_cliente, accion) 
+values (id, usuario,fecha,:new.nombre_cliente,:new.id_cliente,accion);
+ELSIF UPDATING then
+accion := 'Update';
+id := 0;
+usuario:= 'Admin';
+Insert  into Clientes_AUDITORIA (id,usuario,fecha,nombre_cliente,id_cliente, accion) 
+values (id, usuario,fecha,:old.nombre_cliente,:old.id_cliente,accion);
+ELSIF DELETING then
+accion := 'Delete';
+id := 0;
+usuario:= 'Admin';
+Insert  into Clientes_AUDITORIA (id,usuario,fecha,nombre_cliente,id_cliente, accion) 
+values (id, usuario,fecha,:old.nombre_cliente,:old.id_cliente,accion);
+ELSE
+DBMS_OUTPUT.put_line('error');
+END IF;
+END;
