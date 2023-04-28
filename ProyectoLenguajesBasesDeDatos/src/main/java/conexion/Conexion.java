@@ -26,32 +26,36 @@ public class Conexion {
      public Conexion() {
        conectar();
     }
+
+    public Connection getConn() {
+        return conn;
+    }
+
+    public void setConn(Connection conn) {
+        this.conn = conn;
+    }
     
      private void conectar(){
          
          try{
           Class.forName("oracle.jdbc.OracleDriver"); //driver
-          url = "jdbc:oracle:thin:@localhost:1521:ORCL";
-          user = "sys as sysdba";
-          password = "oracle2023";
+          url = "jdbc:oracle:thin:@localhost:1521:xe";
+          user = "proyecto_administrador";
+          password = "123";
           conn = DriverManager.getConnection(url, user, password);
           System.out.println ("conectado");
          }catch (Exception e){
-             System.out.println ("error al conectar");
+             System.out.println ("error al conectar // " +e.getMessage());
          }
      }
-         
-     
      
      public void desconectar(){
          try {
              conn.close();
              System.out.println ("desconectado");
          }catch(Exception e){
-             System.out.println ("error al desconectar");
+             System.out.println ("error al desconectar //En el metodo desconectar");
          }
-         
-         
      }
     
 
