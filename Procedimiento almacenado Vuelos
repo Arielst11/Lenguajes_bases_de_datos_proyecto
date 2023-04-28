@@ -1,0 +1,29 @@
+IS
+BEGIN
+   INSERT INTO vuelos (
+      id_vuelo,
+      nombre_vuelo,
+      origen,
+      id_destino,
+      id_avion,
+      id_tipo_asiento
+   ) VALUES (
+      p_id_vuelo,
+      p_nombre_vuelo,
+      p_origen,
+      p_id_destino,
+      p_id_avion,
+      p_id_tipo_asiento
+   );
+   
+   COMMIT;
+   
+   DBMS_OUTPUT.PUT_LINE('Vuelo insertado correctamente.');
+EXCEPTION
+   WHEN OTHERS THEN
+      DBMS_OUTPUT.PUT_LINE('Error al insertar vuelo: ' || SQLERRM);
+END insertar_vuelo;
+
+BEGIN
+   insertar_vuelo(1243, 'akldsjf', 'Ciudad de México', 1, 1, 20);
+END;
