@@ -32,7 +32,7 @@ public class Conexion {
         this.password = password;
     }
      public Conexion() {
-      conectar();
+       conectar();
     }
 
     public Connection getConn() {
@@ -42,19 +42,22 @@ public class Conexion {
     public void setConn(Connection conn) {
         this.conn = conn;
     }
+    
+     
      public void conectar(){
          
          try{
           Class.forName("oracle.jdbc.OracleDriver"); //driver
-          url = "jdbc:oracle:thin:@localhost:1521:xe";
+          url = "jdbc:oracle:thin:@localhost:1521:ORCL";
           //user = "sys as sysdba";
-          user = "proyecto_administrador";
-          password = "123";
+          user = "HR";
+          password = "oracle2023";
           conn = DriverManager.getConnection(url, user, password);
           System.out.println ("conectado");
          }catch (Exception e){
              System.out.println ("error al conectar // " +e.getMessage());
-         }    
+         }
+         
      }
 
      public void desconectar(){
