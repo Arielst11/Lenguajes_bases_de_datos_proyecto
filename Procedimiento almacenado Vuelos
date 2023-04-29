@@ -27,3 +27,30 @@ END insertar_vuelo;
 BEGIN
    insertar_vuelo(1243, 'akldsjf', 'Ciudad de México', 1, 1, 20);
 END;
+
+
+CREATE OR REPLACE PROCEDURE agregar_aerolinea (
+  p_id_aerolinea IN NUMBER,
+  p_nombre_aerolinea IN VARCHAR2
+)
+AS
+BEGIN
+  INSERT INTO aerolinea (id_aerolinea, nombre_aerolinea)
+  VALUES (p_id_aerolinea, p_nombre_aerolinea);
+  
+  COMMIT;
+END;
+
+CREATE OR REPLACE PROCEDURE agregar_avion (
+  p_id_avion IN NUMBER,
+  p_id_aerolinea IN NUMBER,
+  p_modelo_avion IN VARCHAR2,
+  p_capacidad_pasajeros IN NUMBER
+)
+AS
+BEGIN
+  INSERT INTO avion (id_avion, id_aerolinea, modelo_avion, capacidad_pasajeros)
+  VALUES (p_id_avion, p_id_aerolinea, p_modelo_avion, p_capacidad_pasajeros);
+  
+  COMMIT;
+END;
