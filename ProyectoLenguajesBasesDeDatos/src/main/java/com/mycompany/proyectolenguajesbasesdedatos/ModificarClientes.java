@@ -42,7 +42,7 @@ DefaultTableModel dtm;
       cn.conectar();
     // se prepara el statement.    
     try {
-        ps = cn.conn.prepareStatement("select * from Paises");
+        ps = cn.getConn().prepareStatement("select * from Paises");
     // se ejecuta el statement  
        rs = ps.executeQuery(); 
     // se optienen los datos. 
@@ -70,12 +70,12 @@ DefaultTableModel dtm;
          
       cn.conectar();
     try {
-        ps = cn.conn.prepareStatement("select * from Cliente");
-    // se ejecuta el statement  
+        ps = cn.getConn().prepareStatement("select * from Cliente");
+    // se ejecuta el statement
        rs = ps.executeQuery(); 
     // se optienen los datos. 
        rsm = rs.getMetaData();
-    
+   
     ArrayList<Object[]> data = new ArrayList<>();
     while (rs.next()){
         Object[] rows=new Object[rsm.getColumnCount()];
@@ -88,10 +88,12 @@ DefaultTableModel dtm;
     for (int i = 0; i < data.size(); i++){
         dtm.addRow(data.get(i));
     }
-    
+   
+   
     }catch (Exception e){    
   JOptionPane.showMessageDialog(null, "error al mostrar datos");
     }
+   
      cn.desconectar();
      
     }

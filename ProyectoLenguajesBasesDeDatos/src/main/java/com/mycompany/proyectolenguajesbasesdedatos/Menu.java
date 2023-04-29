@@ -3,7 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package com.mycompany.proyectolenguajesbasesdedatos;
-
+import views.FrmAerolineas;
+import views.FrmVuelos;
 /**
  *
  * @author fidelitas
@@ -33,6 +34,9 @@ public class Menu extends javax.swing.JFrame {
         jMeliminarCliente = new javax.swing.JMenu();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
+        jMenu3 = new javax.swing.JMenu();
+        jMenu4 = new javax.swing.JMenu();
+        jMenu5 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -77,8 +81,33 @@ public class Menu extends javax.swing.JFrame {
 
         jMenuBar1.add(jMmanejoUsuarios);
 
-        jMenu2.setText("Facturas");
+        jMenu2.setText("Vuelos");
+
+        jMenu3.setText("Aerolineas");
+        jMenu3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu3MouseClicked(evt);
+            }
+        });
+        jMenu2.add(jMenu3);
+
+        jMenu4.setText("Vuelos");
+        jMenu4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu4MouseClicked(evt);
+            }
+        });
+        jMenu2.add(jMenu4);
+
         jMenuBar1.add(jMenu2);
+
+        jMenu5.setText("Reserva");
+        jMenu5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu5MouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(jMenu5);
 
         setJMenuBar(jMenuBar1);
 
@@ -123,6 +152,32 @@ AuditoriaClientes auditoria = new AuditoriaClientes();
 auditoria.setVisible(true);// TODO add your handling code here:
     }//GEN-LAST:event_jMenu1MouseClicked
 
+    private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked
+FrmAerolineas aerolineas = new FrmAerolineas();
+aerolineas.setLocationRelativeTo(null);
+aerolineas.setVisible(true);
+
+
+
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenu3MouseClicked
+
+    private void jMenu4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu4MouseClicked
+FrmVuelos vuelos = new FrmVuelos();
+vuelos.setLocationRelativeTo(null);
+vuelos.setVisible(true);
+
+
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenu4MouseClicked
+
+    private void jMenu5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu5MouseClicked
+RegistroReservas reservas = new RegistroReservas();
+reservas.setVisible(true);// TODO add your handling code here:
+    }//GEN-LAST:event_jMenu5MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -162,6 +217,9 @@ auditoria.setVisible(true);// TODO add your handling code here:
     private javax.swing.JMenu jMeliminarCliente;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMmanejoUsuarios;
     private javax.swing.JMenu jMmodificarCliente;

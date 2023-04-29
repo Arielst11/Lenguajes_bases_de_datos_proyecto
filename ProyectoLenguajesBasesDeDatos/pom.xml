@@ -7,9 +7,9 @@
     <packaging>jar</packaging>
     <dependencies>
         <dependency>
-            <groupId>com.jslsolucoes</groupId>
-            <artifactId>ojdbc6</artifactId>
-            <version>11.2.0.1.0</version>
+            <groupId>databaseconector</groupId>
+            <artifactId>library</artifactId>
+            <version>1.0.0</version>
         </dependency>
         <dependency>
             <groupId>org.netbeans.external</groupId>
@@ -19,9 +19,8 @@
     </dependencies>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>16</maven.compiler.source>
-        <maven.compiler.target>16</maven.compiler.target>
+        <maven.compiler.source>20</maven.compiler.source>
+        <maven.compiler.target>20</maven.compiler.target>
         <exec.mainClass>com.mycompany.proyectolenguajesbasesdedatos.ProyectoLenguajesBasesDeDatos</exec.mainClass>
     </properties>
-    <name>ProyectoLenguajesBasesDeDatos_Luis_Version</name>
 </project>

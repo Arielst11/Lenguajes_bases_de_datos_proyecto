@@ -20,8 +20,10 @@ import javax.swing.JOptionPane;
  * @author fidelitas
  */
 public class Conexion {
+
+   
     
-    public Connection conn = null;
+    private Connection conn = null;
     private String url;
     private String user;
     private String password;
@@ -32,18 +34,22 @@ public class Conexion {
         this.password = password;
     }
      public Conexion() {
-       conectar();
+      conectar();
     }
-
+    
+      /**
+     * @return the conn
+     */
     public Connection getConn() {
         return conn;
     }
 
+    /**
+     * @param conn the conn to set
+     */
     public void setConn(Connection conn) {
         this.conn = conn;
     }
-    
-     
      public void conectar(){
          
          try{
@@ -52,24 +58,29 @@ public class Conexion {
           //user = "sys as sysdba";
           user = "HR";
           password = "oracle2023";
-          conn = DriverManager.getConnection(url, user, password);
+            setConn(DriverManager.getConnection(url, user, password));
           System.out.println ("conectado");
          }catch (Exception e){
-             System.out.println ("error al conectar // " +e.getMessage());
+             System.out.println ("error al conectar");
          }
          
      }
-
+         
+     
      public void desconectar(){
          try {
-             conn.close();
+             getConn().close();
              System.out.println ("desconectado");
          }catch(Exception e){
-
-             System.out.println ("error al desconectar //En el metodo desconectar");
-
              System.out.println ("hay un error al desconectar");
-
          }
+         
+         
      }
+    
+     
+     
+
+     
+     
      }

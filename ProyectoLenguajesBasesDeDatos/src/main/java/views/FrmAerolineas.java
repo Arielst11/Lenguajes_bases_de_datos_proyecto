@@ -186,7 +186,7 @@ public class FrmAerolineas extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_nombre_aerolineaActionPerformed
 
     private void btn_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salirActionPerformed
-        System.exit(0);
+        this.dispose();
     }//GEN-LAST:event_btn_salirActionPerformed
 
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed

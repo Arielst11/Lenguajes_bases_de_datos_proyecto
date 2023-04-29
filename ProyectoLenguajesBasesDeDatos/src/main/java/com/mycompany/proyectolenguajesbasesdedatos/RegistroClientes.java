@@ -39,7 +39,7 @@ DefaultTableModel dtm;
       cn.conectar();
     // se prepara el statement.    
     try {
-        ps = cn.conn.prepareStatement("select * from Paises");
+        ps = cn.getConn().prepareStatement("select * from Paises");
     // se ejecuta el statement  
        rs = ps.executeQuery(); 
     // se optienen los datos. 

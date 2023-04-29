@@ -1,105 +1,4 @@
-/////////////////////////////////Ariel
-create table Paises(
-id_pais number(10) not null,
-nombre_pais varchar(50),
-codigo_pais varchar(4),
-constraint pk_pais primary key(id_pais)
-);
-/////////////////////////////////Ariel
-(
-drop table Paises;
-drop table Direccion;
 
-insert into Paises(id_pais,nombre_pais)
-values(1,'Costa_Rica');
-
-
-create table Direccion(
-id_direccion int not null,
-id_pais int not null,
-direccion_domicilio varchar(50) not null,
-constraint pk_direccion primary key(id_direccion),
-constraint fk_pais foreign key (id_pais) references Paises(id_pais)
-);
-
-
-insert into Direccion(id_direccion,id_pais,direccion_domicilio)
-values(1,1,'San Jose, la uruca');
-
-
-
-/////////////////////////////////Ariel
-create table Cliente(
-id_cliente number(10) not null,
-nombre_cliente varchar(50) not null,
-correo_cliente varchar(50) not null,
-telefono_cliente int not null,
-direccion varchar(200) not null,
-id_pais int not null,
-constraint pk_cliente primary key (id_cliente),
-constraint fk_Paises foreign key (id_pais) references Paises(id_pais)
-);
-/////////////////////////////////Ariel
-
-
-
-
-
-insert into Cliente(id_cliente,nombre_cliente,correo_cliente,telefono_cliente,id_direccion)
-values(1,'Carlos','carlos@gmail.com',70594020,1);
-
-create table Aerolinea(
-id_aerolinea int not null,
-nombre_aerolinea varchar(50),
-constraint pk_aerolinea primary key (id_aerolinea)
-);
-
-insert into Aerolinea(id_aerolinea,nombre_aerolinea)
-values(1,'AmericaVuela');
-
-create table Avion(
-id_avion int not null,
-id_aerolinea int not nullSS
-modelo_avion varchar(50) not null,
-capacidad_pasajeros int not null,
-constraint pk_avion primary key (id_avion),
-constraint fk_aerolinea foreign key (id_aerolinea) references Aerolinea(id_aerolinea)
-);
-create table Paises(
-id_pais int not null,
-nombre_pais varchar(50),
-constraint pk_pais primary key(id_pais)
-);
-
-drop table Paises;
-drop table Direccion;
-
-insert into Paises(id_pais,nombre_pais)
-values(1,'Costa_Rica');´
-
-
-create table Direccion(
-id_direccion int not null,
-id_pais int not null
-constraint pk_direccion primary key(id_direccion),
-constraint fk_pais foreign key (id_pais) references Paises(id_pais)
-);
-
-
-insert into Direccion(id_direccion,id_pais,direccion_domicilio)
-values(1,1,'San Jose, la uruca');
-
-create table Cliente(
-id_cliente int not null,
-nombre_cliente varchar(50) not null,
-correo_cliente varchar(50) not null,
-telefono_cliente int not null,
-id_direccion int not null,
-constraint pk_cliente primary key (id_cliente)
-);
-
-insert into Cliente(id_cliente,nombre_cliente,correo_cliente,telefono_cliente,id_direccion)
-values(1,'Carlos','carlos@gmail.com',70594020,1);
 
 create table Aerolinea(
 id_aerolinea int not null,
@@ -157,8 +56,26 @@ constraint fk_id_tipo_asiento foreign key (id_tipo_asiento) references tipo_asie
 insert into Vuelos(id_vuelo,nombre_vuelo,origen,id_destino,id_avion,id_tipo_asiento)
 values(1018,'NOMBRE','Aeropuerto interncionla Juan Santa María',1,1,20);
 
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////
 drop table reserva;
 
+create sequence reserva_sequenceID
+START WITH 1
+INCREMENT BY 1
+NOCACHE
+NOCYCLE;
+
+create or replace trigger reservaInsertID
+before insert on Reserva
+for each row
+begin
+select reserva_sequenceID.nextval
+INTO :new.id_reserva
+from dual;
+end;
 
 
 create table Reserva(
@@ -166,12 +83,15 @@ id_reserva int not null,
 id_vuelo int not null,
 precio_boleto int not null,
 cantidad_boletos int not null,
+id_cliente int not null,
 constraint pk_id_reserva primary key (id_reserva),
-constraint fk_id_vuelos foreign key (id_vuelo) references Vuelos(id_vuelo)
+constraint fk_id_vuelos foreign key (id_vuelo) references Vuelos(id_vuelo),
+constraint fk_id_cliente foreign key (id_cliente) references Cliente(id_cliente)
 );
 
-insert into Reserva(id_reserva,id_vuelo,precio_boleto,cantidad_boletos)
-values (1,1018,1000,2);
+
+--insert into Reserva(id_reserva,id_vuelo,precio_boleto,cantidad_boletos)
+--values (1,1018,1000,2);
 
 create table factura (
 id_factura int not null,
@@ -183,6 +103,9 @@ constraint pk_id_factura primary key (id_factura),
 constraint fk_id_reserva foreign key (id_reserva) references Reserva(id_reserva),
 constraint fk_id_cliente foreign key (id_cliente) references Cliente(id_cliente)	
 );
+
+
+
 
 ----------Vistas---------
 

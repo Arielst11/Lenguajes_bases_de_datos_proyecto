@@ -41,7 +41,7 @@ DefaultTableModel dtm;
       Conexion cn = new Conexion();
       cn.conectar();
     try {
-        ps = cn.conn.prepareStatement("select * from Clientes_AUDITORIA");
+        ps = cn.getConn().prepareStatement("select * from Clientes_AUDITORIA");
     // se ejecuta el statement  
        rs = ps.executeQuery(); 
     // se optienen los datos. 

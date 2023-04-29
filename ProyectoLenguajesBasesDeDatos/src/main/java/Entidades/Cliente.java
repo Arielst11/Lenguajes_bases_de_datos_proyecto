@@ -53,7 +53,7 @@ public void ingresarCliente(){
 PreparedStatement ps;
     // se prepara el statement.    
     try {
-        ps = cn.conn.prepareCall("insert into Cliente"
+        ps = cn.getConn().prepareCall("insert into Cliente"
      + " (id_cliente,nombre_cliente, correo_cliente,telefono_cliente,direccion,id_pais) values"
                 + "(?,?,?,?,?,?)");
         
@@ -85,7 +85,7 @@ PreparedStatement ps;
      + " (id_cliente,nombre_cliente, correo_cliente,telefono_cliente,direccion,id_pais) values"
                 + "(?,?,?,?,?,?)");
         */
-        ps = cn.conn.prepareStatement("Update Cliente set "
+        ps = cn.getConn().prepareStatement("Update Cliente set "
                 + "nombre_cliente = ?,"
                 + "correo_cliente = ?,"
                 + "telefono_cliente = ?,"
@@ -117,7 +117,7 @@ public void borrarCliente(){
 PreparedStatement ps;
     // se prepara el statement.    
     try {
-        ps = cn.conn.prepareCall("Delete from Cliente where id_cliente = ?");
+        ps = cn.getConn().prepareCall("Delete from Cliente where id_cliente = ?");
         
       ps.setString(1, String.valueOf(this.id_cliente)); 
       if(ps.executeUpdate() >0){
