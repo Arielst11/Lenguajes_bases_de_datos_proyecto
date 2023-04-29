@@ -5,6 +5,7 @@
 package com.mycompany.proyectolenguajesbasesdedatos;
 import views.FrmAerolineas;
 import views.FrmVuelos;
+import views.FrmAviones;
 /**
  *
  * @author fidelitas
@@ -36,7 +37,10 @@ public class Menu extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
+        jMenu6 = new javax.swing.JMenu();
         jMenu5 = new javax.swing.JMenu();
+        jMenu7 = new javax.swing.JMenu();
+        jMenu8 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -82,6 +86,11 @@ public class Menu extends javax.swing.JFrame {
         jMenuBar1.add(jMmanejoUsuarios);
 
         jMenu2.setText("Vuelos");
+        jMenu2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu2MouseClicked(evt);
+            }
+        });
 
         jMenu3.setText("Aerolineas");
         jMenu3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -99,6 +108,14 @@ public class Menu extends javax.swing.JFrame {
         });
         jMenu2.add(jMenu4);
 
+        jMenu6.setText("Aviones");
+        jMenu6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu6MouseClicked(evt);
+            }
+        });
+        jMenu2.add(jMenu6);
+
         jMenuBar1.add(jMenu2);
 
         jMenu5.setText("Reserva");
@@ -107,6 +124,26 @@ public class Menu extends javax.swing.JFrame {
                 jMenu5MouseClicked(evt);
             }
         });
+
+        jMenu7.setText("Crear Reserva");
+        jMenu7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu7MouseClicked(evt);
+            }
+        });
+        jMenu5.add(jMenu7);
+
+        jMenu8.setText("Mostrar Reservas");
+        jMenu8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu8MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jMenu8MouseEntered(evt);
+            }
+        });
+        jMenu5.add(jMenu8);
+
         jMenuBar1.add(jMenu5);
 
         setJMenuBar(jMenuBar1);
@@ -174,9 +211,36 @@ vuelos.setVisible(true);
     }//GEN-LAST:event_jMenu4MouseClicked
 
     private void jMenu5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu5MouseClicked
+
+    }//GEN-LAST:event_jMenu5MouseClicked
+
+    private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
+
+    }//GEN-LAST:event_jMenu2MouseClicked
+
+    private void jMenu6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu6MouseClicked
+FrmAviones aviones = new FrmAviones();
+aviones.setLocationRelativeTo(null);
+aviones.setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenu6MouseClicked
+
+    private void jMenu7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu7MouseClicked
 RegistroReservas reservas = new RegistroReservas();
 reservas.setVisible(true);// TODO add your handling code here:
-    }//GEN-LAST:event_jMenu5MouseClicked
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenu7MouseClicked
+
+    private void jMenu8MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu8MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenu8MouseEntered
+
+    private void jMenu8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu8MouseClicked
+MuestraReservas reservasview = new MuestraReservas();
+reservasview.setVisible(true);
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenu8MouseClicked
 
     /**
      * @param args the command line arguments
@@ -220,6 +284,9 @@ reservas.setVisible(true);// TODO add your handling code here:
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenu jMenu6;
+    private javax.swing.JMenu jMenu7;
+    private javax.swing.JMenu jMenu8;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMmanejoUsuarios;
     private javax.swing.JMenu jMmodificarCliente;

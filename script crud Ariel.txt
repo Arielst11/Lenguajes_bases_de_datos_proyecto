@@ -265,3 +265,14 @@ BEGIN
   
   COMMIT;
 END;
+
+--RESERVAS VIEW
+
+create view muestraReservas
+as
+select cli.NOMBRE_CLIENTE , cli.CORREO_CLIENTE, vue.NOMBRE_VUELO , vue.ORIGEN, dest.NOMBRE_DESTINO,
+res.PRECIO_BOLETO FROM
+reserva res join
+vuelos vue on res.ID_VUELO = vue.ID_VUELO join
+cliente cli on res.ID_CLIENTE = cli.ID_CLIENTE join
+destino dest on vue.ID_DESTINO = dest.ID_DESTINO;

@@ -62,10 +62,15 @@ public class FrmVuelos extends javax.swing.JFrame {
         tb_vuelos = new javax.swing.JTable();
         btn_salir = new javax.swing.JButton();
         btn_eliminar = new javax.swing.JButton();
-        btn_agregar = new javax.swing.JButton();
+        btn_destinos = new javax.swing.JButton();
         btn_Modificar1 = new javax.swing.JButton();
         btn_cargar_tabla = new javax.swing.JButton();
         btn_limpiar2 = new javax.swing.JButton();
+        btn_agregar1 = new javax.swing.JButton();
+        btn_agregar2 = new javax.swing.JButton();
+        btn_aviones = new javax.swing.JButton();
+        Label_asiento1 = new javax.swing.JLabel();
+        Label_asiento2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -138,8 +143,8 @@ public class FrmVuelos extends javax.swing.JFrame {
         jPanel1.add(label_destino, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, -1, -1));
 
         Label_asiento.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        Label_asiento.setText("ID Tipo Asiento");
-        jPanel1.add(Label_asiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 340, -1, -1));
+        Label_asiento.setText("20 - Regular");
+        jPanel1.add(Label_asiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 400, -1, -1));
 
         txt_asiento.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txt_asiento.addActionListener(new java.awt.event.ActionListener() {
@@ -187,19 +192,19 @@ public class FrmVuelos extends javax.swing.JFrame {
         });
         jPanel1.add(btn_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 510, -1, -1));
 
-        btn_agregar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btn_agregar.setText("Agregar");
-        btn_agregar.addMouseListener(new java.awt.event.MouseAdapter() {
+        btn_destinos.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btn_destinos.setText("Ver destinos");
+        btn_destinos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_agregarMouseClicked(evt);
+                btn_destinosMouseClicked(evt);
             }
         });
-        btn_agregar.addActionListener(new java.awt.event.ActionListener() {
+        btn_destinos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_agregarActionPerformed(evt);
+                btn_destinosActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 510, -1, -1));
+        jPanel1.add(btn_destinos, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 460, -1, -1));
 
         btn_Modificar1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btn_Modificar1.setText("Modificar");
@@ -227,6 +232,57 @@ public class FrmVuelos extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btn_limpiar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 510, -1, -1));
+
+        btn_agregar1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btn_agregar1.setText("Agregar");
+        btn_agregar1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_agregar1MouseClicked(evt);
+            }
+        });
+        btn_agregar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_agregar1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_agregar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 510, -1, -1));
+
+        btn_agregar2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btn_agregar2.setText("Agregar");
+        btn_agregar2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_agregar2MouseClicked(evt);
+            }
+        });
+        btn_agregar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_agregar2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_agregar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 510, -1, -1));
+
+        btn_aviones.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btn_aviones.setText("Ver aviones");
+        btn_aviones.setActionCommand("");
+        btn_aviones.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_avionesMouseClicked(evt);
+            }
+        });
+        btn_aviones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_avionesActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_aviones, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 460, -1, -1));
+
+        Label_asiento1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        Label_asiento1.setText("ID Tipo Asiento");
+        jPanel1.add(Label_asiento1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 330, -1, -1));
+
+        Label_asiento2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        Label_asiento2.setText("10 - VIP");
+        jPanel1.add(Label_asiento2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 370, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 960, 590));
 
@@ -281,30 +337,11 @@ public class FrmVuelos extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_eliminarActionPerformed
 
-    private void btn_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregarActionPerformed
-
-        if (txt_nombre.getText().isEmpty() || txt_origen.getText().isEmpty() 
-                || txt_destno.getText().isEmpty() || txt_asiento.getText().isEmpty() || txt_avion.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Llene todos los campos de texto");
-            
-        } else {
-            
-         Vuelo vu = new Vuelo();
-       
-        vu.setNombre_vuelo(txt_nombre.getText());
-        vu.setOrigen(txt_origen.getText());
-        vu.setId_destino(Integer.parseInt(txt_destno.getText()));
-        vu.setId_avion(Integer.parseInt(txt_avion.getText()));
-        vu.setId_tipo_asiento(Integer.parseInt(txt_asiento.getText()));
-       
-        mensaje = ebo.agregarVuelo(vu);
-        JOptionPane.showMessageDialog(null, mensaje);
-        
-        listarVuelo();
-        limpiar();
-            
-        }
-    }//GEN-LAST:event_btn_agregarActionPerformed
+    private void btn_destinosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_destinosActionPerformed
+verDestinos destinos = new verDestinos();
+destinos.setVisible(true);
+     
+    }//GEN-LAST:event_btn_destinosActionPerformed
 
     private void btn_Modificar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Modificar1ActionPerformed
         if (txt_nombre.getText().isEmpty() || txt_origen.getText().isEmpty() 
@@ -337,9 +374,9 @@ public class FrmVuelos extends javax.swing.JFrame {
     public void idMax(){
         txt_id.setText(ebo.getMaxID()+"");
     }
-    private void btn_agregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_agregarMouseClicked
+    private void btn_destinosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_destinosMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_btn_agregarMouseClicked
+    }//GEN-LAST:event_btn_destinosMouseClicked
 
     private void btn_limpiar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_limpiar2ActionPerformed
        limpiar();
@@ -356,6 +393,52 @@ public class FrmVuelos extends javax.swing.JFrame {
         txt_asiento.setText(tb_vuelos.getValueAt(seleccion, 5)+"");
         
     }//GEN-LAST:event_tb_vuelosMouseClicked
+
+    private void btn_agregar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_agregar1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_agregar1MouseClicked
+
+    private void btn_agregar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregar1ActionPerformed
+     if (txt_nombre.getText().isEmpty() || txt_origen.getText().isEmpty() 
+                || txt_destno.getText().isEmpty() || txt_asiento.getText().isEmpty() || txt_avion.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Llene todos los campos de texto");
+            
+        } else {
+            
+         Vuelo vu = new Vuelo();
+       
+        vu.setNombre_vuelo(txt_nombre.getText());
+        vu.setOrigen(txt_origen.getText());
+        vu.setId_destino(Integer.parseInt(txt_destno.getText()));
+        vu.setId_avion(Integer.parseInt(txt_avion.getText()));
+        vu.setId_tipo_asiento(Integer.parseInt(txt_asiento.getText()));
+       
+        mensaje = ebo.agregarVuelo(vu);
+        JOptionPane.showMessageDialog(null, mensaje);
+        
+        listarVuelo();
+        limpiar();
+            
+        }
+    }//GEN-LAST:event_btn_agregar1ActionPerformed
+
+    private void btn_agregar2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_agregar2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_agregar2MouseClicked
+
+    private void btn_agregar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregar2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_agregar2ActionPerformed
+
+    private void btn_avionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_avionesMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_avionesMouseClicked
+
+    private void btn_avionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_avionesActionPerformed
+verAviones aviones = new verAviones();
+aviones.setVisible(true);
+// TODO add your handling code here:
+    }//GEN-LAST:event_btn_avionesActionPerformed
     
     public void limpiar(){
         txt_id.setText("");
@@ -404,9 +487,14 @@ public class FrmVuelos extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Label_asiento;
+    private javax.swing.JLabel Label_asiento1;
+    private javax.swing.JLabel Label_asiento2;
     private javax.swing.JButton btn_Modificar1;
-    private javax.swing.JButton btn_agregar;
+    private javax.swing.JButton btn_agregar1;
+    private javax.swing.JButton btn_agregar2;
+    private javax.swing.JButton btn_aviones;
     private javax.swing.JButton btn_cargar_tabla;
+    private javax.swing.JButton btn_destinos;
     private javax.swing.JButton btn_eliminar;
     private javax.swing.JButton btn_limpiar2;
     private javax.swing.JButton btn_salir;

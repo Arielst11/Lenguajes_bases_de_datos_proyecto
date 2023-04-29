@@ -58,10 +58,11 @@ public class FrmAviones extends javax.swing.JFrame {
         tb_vuelos = new javax.swing.JTable();
         btn_salir = new javax.swing.JButton();
         btn_eliminar = new javax.swing.JButton();
-        btn_agregar = new javax.swing.JButton();
+        btn_verAerolineas = new javax.swing.JButton();
         btn_Modificar1 = new javax.swing.JButton();
         btn_cargar_tabla = new javax.swing.JButton();
         btn_limpiar2 = new javax.swing.JButton();
+        btn_agregar1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -82,7 +83,7 @@ public class FrmAviones extends javax.swing.JFrame {
         jPanel1.add(txt_id_avion, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 120, 250, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel3.setText("Vuelos");
+        jLabel3.setText("Aviones");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 20, -1, -1));
 
         txt_modelo_avion.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -159,19 +160,19 @@ public class FrmAviones extends javax.swing.JFrame {
         });
         jPanel1.add(btn_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 510, -1, -1));
 
-        btn_agregar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btn_agregar.setText("Agregar");
-        btn_agregar.addMouseListener(new java.awt.event.MouseAdapter() {
+        btn_verAerolineas.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btn_verAerolineas.setText("Ver aerolineas");
+        btn_verAerolineas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_agregarMouseClicked(evt);
+                btn_verAerolineasMouseClicked(evt);
             }
         });
-        btn_agregar.addActionListener(new java.awt.event.ActionListener() {
+        btn_verAerolineas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_agregarActionPerformed(evt);
+                btn_verAerolineasActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 510, -1, -1));
+        jPanel1.add(btn_verAerolineas, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 390, -1, -1));
 
         btn_Modificar1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btn_Modificar1.setText("Modificar");
@@ -200,6 +201,20 @@ public class FrmAviones extends javax.swing.JFrame {
         });
         jPanel1.add(btn_limpiar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 510, -1, -1));
 
+        btn_agregar1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btn_agregar1.setText("Agregar");
+        btn_agregar1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_agregar1MouseClicked(evt);
+            }
+        });
+        btn_agregar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_agregar1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_agregar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 510, -1, -1));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 960, 590));
 
         pack();
@@ -222,7 +237,7 @@ public class FrmAviones extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_capacidad_pasajerosActionPerformed
 
     private void btn_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salirActionPerformed
-        System.exit(0);
+       this.dispose();
     }//GEN-LAST:event_btn_salirActionPerformed
 
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
@@ -245,28 +260,11 @@ public class FrmAviones extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_eliminarActionPerformed
 
-    private void btn_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregarActionPerformed
-
-        if (txt_id_aerolinea.getText().isEmpty() || txt_modelo_avion.getText().isEmpty() 
-                || txt_capacidad_pasajeros.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Llene todos los campos de texto");
-            
-        } else {
-            
-         Avion av = new Avion();
+    private void btn_verAerolineasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_verAerolineasActionPerformed
+verAerolineas aerolineas = new verAerolineas();
+aerolineas.setVisible(true);
        
-         av.setId_aerolinea(Integer.parseInt(txt_id_aerolinea.getText()));
-         av.setModelo_avion(txt_modelo_avion.getText());
-         av.setCapacidad_pasajeros(Integer.parseInt(txt_capacidad_pasajeros.getText()));
-                
-        mensaje = avbo.agregarAvion(av);
-        JOptionPane.showMessageDialog(null, mensaje);
-        
-        listarAvion();
-        limpiar();
-            
-        }
-    }//GEN-LAST:event_btn_agregarActionPerformed
+    }//GEN-LAST:event_btn_verAerolineasActionPerformed
 
     private void btn_Modificar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Modificar1ActionPerformed
         if (txt_id_aerolinea.getText().isEmpty() || txt_modelo_avion.getText().isEmpty() 
@@ -296,9 +294,9 @@ public class FrmAviones extends javax.swing.JFrame {
     public void idMax(){
         txt_id_avion.setText(avbo.getMaxID()+"");
     }
-    private void btn_agregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_agregarMouseClicked
+    private void btn_verAerolineasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_verAerolineasMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_btn_agregarMouseClicked
+    }//GEN-LAST:event_btn_verAerolineasMouseClicked
 
     private void btn_limpiar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_limpiar2ActionPerformed
        limpiar();
@@ -314,6 +312,33 @@ public class FrmAviones extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_tb_vuelosMouseClicked
+
+    private void btn_agregar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_agregar1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_agregar1MouseClicked
+
+    private void btn_agregar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregar1ActionPerformed
+if (txt_id_aerolinea.getText().isEmpty() || txt_modelo_avion.getText().isEmpty() 
+                || txt_capacidad_pasajeros.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Llene todos los campos de texto");
+            
+        } else {
+            
+         Avion av = new Avion();
+       
+         av.setId_aerolinea(Integer.parseInt(txt_id_aerolinea.getText()));
+         av.setModelo_avion(txt_modelo_avion.getText());
+         av.setCapacidad_pasajeros(Integer.parseInt(txt_capacidad_pasajeros.getText()));
+                
+        mensaje = avbo.agregarAvion(av);
+        JOptionPane.showMessageDialog(null, mensaje);
+        
+        listarAvion();
+        limpiar();
+            
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_agregar1ActionPerformed
     
     public void limpiar(){
         txt_id_avion.setText("");
@@ -364,11 +389,12 @@ public class FrmAviones extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_Modificar1;
-    private javax.swing.JButton btn_agregar;
+    private javax.swing.JButton btn_agregar1;
     private javax.swing.JButton btn_cargar_tabla;
     private javax.swing.JButton btn_eliminar;
     private javax.swing.JButton btn_limpiar2;
     private javax.swing.JButton btn_salir;
+    private javax.swing.JButton btn_verAerolineas;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
