@@ -28,7 +28,7 @@ public class AerolineasDao {
                 + "END;";
         
         try {
-            pst = con.prepareCall(sql);
+            pst = con.prepareStatement(sql);
             pst.setInt(1, id);
             pst.setString(2, Aero.getNombre_aerolinea());
             
@@ -54,7 +54,7 @@ public class AerolineasDao {
             pst = con.prepareStatement(sql);
             pst.setString(1,Aero.getNombre_aerolinea());
             
-            
+            pst.setInt(2, Aero.getId_aerolinea());
            
             mensaje = "AEROLINEA MODIFICADO CORRECTAMENTE";
             pst.execute();
