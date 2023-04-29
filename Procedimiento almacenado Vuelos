@@ -1,3 +1,10 @@
+CREATE OR REPLACE PROCEDURE insertar_vuelo ( 
+p_id_vuelo IN int,
+p_nombre_vuelo IN VARCHAR,
+p_origen IN VARCHAR,
+p_id_destino IN int,
+p_id_avion IN int,
+p_id_tipo_asiento IN int)
 IS
 BEGIN
    INSERT INTO vuelos (
