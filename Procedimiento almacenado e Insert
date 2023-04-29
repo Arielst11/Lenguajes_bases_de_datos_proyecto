@@ -1,0 +1,106 @@
+CREATE OR REPLACE PROCEDURE insertar_vuelo ( 
+p_id_vuelo IN int,
+p_nombre_vuelo IN VARCHAR,
+p_origen IN VARCHAR,
+p_id_destino IN int,
+p_id_avion IN int,
+p_id_tipo_asiento IN int)
+IS
+BEGIN
+   INSERT INTO vuelos (
+      id_vuelo,
+      nombre_vuelo,
+      origen,
+      id_destino,
+      id_avion,
+      id_tipo_asiento
+   ) VALUES (
+      p_id_vuelo,
+      p_nombre_vuelo,
+      p_origen,
+      p_id_destino,
+      p_id_avion,
+      p_id_tipo_asiento
+   );
+   
+   COMMIT;
+   
+   DBMS_OUTPUT.PUT_LINE('Vuelo insertado correctamente.');
+EXCEPTION
+   WHEN OTHERS THEN
+      DBMS_OUTPUT.PUT_LINE('Error al insertar vuelo: ' || SQLERRM);
+END insertar_vuelo;
+
+BEGIN
+   insertar_vuelo(1243, 'akldsjf', 'Ciudad de México', 1, 1, 20);
+END;
+
+
+CREATE OR REPLACE PROCEDURE agregar_aerolinea (
+  p_id_aerolinea IN NUMBER,
+  p_nombre_aerolinea IN VARCHAR2
+)
+AS
+BEGIN
+  INSERT INTO aerolinea (id_aerolinea, nombre_aerolinea)
+  VALUES (p_id_aerolinea, p_nombre_aerolinea);
+  
+  COMMIT;
+END;
+
+CREATE OR REPLACE PROCEDURE agregar_avion (
+  p_id_avion IN NUMBER,
+  p_id_aerolinea IN NUMBER,
+  p_modelo_avion IN VARCHAR2,
+  p_capacidad_pasajeros IN NUMBER
+)
+AS
+BEGIN
+  INSERT INTO avion (id_avion, id_aerolinea, modelo_avion, capacidad_pasajeros)
+  VALUES (p_id_avion, p_id_aerolinea, p_modelo_avion, p_capacidad_pasajeros);
+  
+  COMMIT;
+END;
+
+////////////////////////////////////////////INSERT////////////////////////
+INSERT INTO TIPO_ASIENTO (ID_TIPO,NOMBRE_TIPO_ASIENTO) VALUES (30,'asiento clase ejecutiva');
+INSERT INTO TIPO_ASIENTO (ID_TIPO,NOMBRE_TIPO_ASIENTO) VALUES (40,'asiento primera clase');
+
+INSERT INTO destino (id_destino, nombre_destino) VALUES (2, 'Nueva York');
+INSERT INTO destino (id_destino, nombre_destino) VALUES (3, 'Los Ángeles');
+INSERT INTO destino (id_destino, nombre_destino) VALUES (4, 'París');
+INSERT INTO destino (id_destino, nombre_destino) VALUES (5, 'Tokio');
+INSERT INTO destino (id_destino, nombre_destino) VALUES (6, 'Roma');
+INSERT INTO destino (id_destino, nombre_destino) VALUES (7, 'Barcelona');
+INSERT INTO destino (id_destino, nombre_destino) VALUES (8, 'San Francisco');
+INSERT INTO destino (id_destino, nombre_destino) VALUES (9, 'Sídney');
+INSERT INTO destino (id_destino, nombre_destino) VALUES (10, 'Hong Kong');
+INSERT INTO destino (id_destino, nombre_destino) VALUES (11, 'Londres');
+INSERT INTO destino (id_destino, nombre_destino) VALUES (12, 'Cuidad de México');
+
+INSERT INTO aerolinea (id_aerolinea, nombre_aerolinea) VALUES (3, 'Delta Airlines');
+INSERT INTO aerolinea (id_aerolinea, nombre_aerolinea) VALUES (4, 'British Airways');
+INSERT INTO aerolinea (id_aerolinea, nombre_aerolinea) VALUES (5, 'Lufthansa');
+INSERT INTO aerolinea (id_aerolinea, nombre_aerolinea) VALUES (6, 'Air France');
+INSERT INTO aerolinea (id_aerolinea, nombre_aerolinea) VALUES (7, 'Cathay Pacific');
+INSERT INTO aerolinea (id_aerolinea, nombre_aerolinea) VALUES (8, 'Singapore Airlines');
+INSERT INTO aerolinea (id_aerolinea, nombre_aerolinea) VALUES (9, 'Qatar Airways');
+INSERT INTO aerolinea (id_aerolinea, nombre_aerolinea) VALUES (10, 'ANA (All Nippon Airways)');
+INSERT INTO aerolinea (id_aerolinea, nombre_aerolinea) VALUES (11, 'American Airlines');
+INSERT INTO aerolinea (id_aerolinea, nombre_aerolinea) VALUES (12, 'Emirates');
+
+INSERT INTO avion (id_avion, id_aerolinea, modelo_avion, capacidad_pasajeros) VALUES (101, 1, 'Boeing 747', 400);
+INSERT INTO avion (id_avion, id_aerolinea, modelo_avion, capacidad_pasajeros) VALUES (102, 12, 'Airbus A380', 853);
+INSERT INTO avion (id_avion, id_aerolinea, modelo_avion, capacidad_pasajeros) VALUES (103, 3, 'Embraer E190', 100);
+INSERT INTO avion (id_avion, id_aerolinea, modelo_avion, capacidad_pasajeros) VALUES (104, 10, 'Boeing 787 Dreamliner', 290);
+INSERT INTO avion (id_avion, id_aerolinea, modelo_avion, capacidad_pasajeros) VALUES (105, 4, 'Airbus A320neo', 195);
+
+INSERT INTO vuelos (id_vuelo, nombre_vuelo, origen, id_destino, id_avion, id_tipo_asiento) VALUES (1019, 'MX-ES', 'Ciudad de México', 7, 101, 30);
+INSERT INTO vuelos (id_vuelo, nombre_vuelo, origen, id_destino, id_avion, id_tipo_asiento) VALUES (1020, 'NY-LA', 'Nueva York', 3, 102, 40);
+INSERT INTO vuelos (id_vuelo, nombre_vuelo, origen, id_destino, id_avion, id_tipo_asiento) VALUES (1021, 'UK-HK', 'Londres', 10, 103, 20);
+INSERT INTO vuelos (id_vuelo, nombre_vuelo, origen, id_destino, id_avion, id_tipo_asiento) VALUES (1022, 'JP-IT', 'Tokio', 5, 104, 30);
+INSERT INTO vuelos (id_vuelo, nombre_vuelo, origen, id_destino, id_avion, id_tipo_asiento) VALUES (1023, 'FRA-ES', 'París', 7, 105, 20);
+
+INSERT INTO vuelos (id_vuelo, nombre_vuelo, origen, id_destino, id_avion, id_tipo_asiento) VALUES (1024, 'EU-AU', 'San Francisco', 9, 102, 40);
+INSERT INTO vuelos (id_vuelo, nombre_vuelo, origen, id_destino, id_avion, id_tipo_asiento) VALUES (1025, 'FRA-MX', 'París', 12, 104, 30);
+INSERT INTO vuelos (id_vuelo, nombre_vuelo, origen, id_destino, id_avion, id_tipo_asiento) VALUES (1026, 'FRA-IT', 'París', 6, 101, 20);
